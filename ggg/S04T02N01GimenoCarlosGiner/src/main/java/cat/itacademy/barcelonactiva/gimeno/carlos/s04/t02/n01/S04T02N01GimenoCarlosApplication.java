@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
 
 @SpringBootApplication
-@Controller
+
 public class S04T02N01GimenoCarlosApplication {
 
 	public static void main(String[] args) {

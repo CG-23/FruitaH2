@@ -1,5 +1,7 @@
 package cat.itacademy.barcelonactiva.gimeno.carlos.s04.t02.n01.model;
 
+import java.util.Objects;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,8 +13,8 @@ import javax.persistence.Table;
 @Table(name = "Fruites")
 public class Fruita {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
 
 	@Column(name = "nom")
 	private String nom;
@@ -21,10 +23,9 @@ public class Fruita {
 	private int quantitatKG;
 
 	public Fruita() {
-
 	}
 
-	public Fruita(String nom, int quantitatKG, boolean published) {
+	public Fruita(String nom, int quantitatKG) {
 		this.nom = nom;
 		this.quantitatKG = quantitatKG;
 	}
@@ -45,8 +46,25 @@ public class Fruita {
 		this.quantitatKG = quantitatKG;
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, nom, quantitatKG);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Fruita other = (Fruita) obj;
+		return id == other.id && Objects.equals(nom, other.nom) && quantitatKG == other.quantitatKG;
 	}
 
 	@Override
